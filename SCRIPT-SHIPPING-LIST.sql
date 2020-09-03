@@ -48,7 +48,6 @@ CREATE TABLE `customers` (
   `address_zoneId` int(11) NOT NULL,
   `address_street` varchar(80) COLLATE utf8_spanish_ci NOT NULL,   
   `address_number` varchar(15) COLLATE utf8_spanish_ci NOT NULL,   
-  `address_depto` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,   
   `address_depto` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,     
   `address_description` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,     
   `psw` varchar(20) COLLATE utf8_spanish_ci NOT NULL, 
