@@ -11,10 +11,28 @@ CREATE TABLE `managers` (
   `lastname` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `psw` varchar(20) COLLATE utf8_spanish_ci NOT NULL, 
-  `businessId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+
+DROP TABLE IF EXISTS `business`; 
+
+CREATE TABLE `business` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `description` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `managers_business`; 
+
+CREATE TABLE `managers_business` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `managerId` int(11) NOT NULL,
+  `businessId` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `customers`;
 
@@ -38,14 +56,6 @@ CREATE TABLE `customers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
-DROP TABLE IF EXISTS `business`; 
-
-CREATE TABLE `business` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `description` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `categories`; 
 
@@ -70,9 +80,9 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-DROP TABLE IF EXISTS `product_customer`; 
+DROP TABLE IF EXISTS `products_orders`; 
 
-CREATE TABLE `product_customer` (
+CREATE TABLE `products_orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `productId` int(11) NOT NULL,
   `orderId` int(11) NOT NULL,
@@ -88,6 +98,10 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `customerId` int(11) NOT NULL,  
   `description` varchar(50) COLLATE utf8_spanish_ci,
+  `orderDate` varchar(20) COLLATE utf8_spanish_ci,
+  `readDate` varchar(20) COLLATE utf8_spanish_ci,
+  `customerComment` varchar(200) COLLATE utf8_spanish_ci,
+  `managerComment` varchar(200) COLLATE utf8_spanish_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
